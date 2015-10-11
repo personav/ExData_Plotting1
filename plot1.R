@@ -1,0 +1,13 @@
+Course Project 1
+data<-read.csv2("household_power_consumption.txt")
+data1<-data[66637:69516,]
+a<-strptime(data1$Date,"%d/%m/%Y")
+b<-paste(data1$Date,data1$Time)
+c<-strptime(b,"%d/%m/%Y %H:%M:%S")
+data1$Time<-c
+data1$Date<-a
+d<-data1$Global_active_power
+e<-as.numeric(as.character(d))
+png(filename="plot1.png",width=480,height=480,units="px")
+hist(e,col="red",breaks=12,xlab="Global Active Power (Kilowatts)",main="Global Active Power")
+dev.off()
